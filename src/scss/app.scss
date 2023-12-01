@@ -1,0 +1,49 @@
+@import './variables.scss';
+@import './libs/normalize.scss';
+
+@import './components/header.scss';
+@import './components/todo.scss';
+@import "./components/task.scss";
+
+
+@font-face {
+  font-family: "Cabin";
+  src: url("../../../todo-app/src/assets/fonts/Cabin.ttf");
+}
+
+body{
+  background-color: $orange;
+}
+
+p{
+  font-family: Cabin;
+}
+
+.container {
+  z-index: 4;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 30px;
+  position: relative;
+
+  @media (min-width: 768px) {
+    padding: 0;
+    width: 648px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 870px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 1126px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 1300px
+  }
+
+  @media (min-width: 1750px) {
+    width: 1662px;
+  }
+}
