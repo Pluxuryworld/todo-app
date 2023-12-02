@@ -1,6 +1,9 @@
 @import "../variables.scss";
 
-.item {
+.task {
+  padding: 10px 10px;
+  border: 1px solid $black;
+  border-radius: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -9,27 +12,37 @@
   width: 100%;
   height: 100%;
 
-  .checkbox {
-    align-items: center;
-      width: 30px;
-    accent-color: $orange;
+  .box {
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
   }
 
+  .checkbox {
+    width: 30px;
+    height: 30px;
+    accent-color: $black;
+  }
+
+  p {
+    word-break: break-all;
+    white-space: normal;
+  }
 
   .text {
     border: none;
     font-size: 30px;
     width: 100%;
-    padding-left: 20px;
   }
 
   .text::placeholder {
     color: $black;
   }
 
-  button{
+  button {
     border: none;
-    background:none;
+    background: none;
   }
 
   img {
