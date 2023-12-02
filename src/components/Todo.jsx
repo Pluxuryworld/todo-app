@@ -1,15 +1,14 @@
 import Task from "./Task";
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
-import {addTask, completeAll, deleteAll} from "../redux/reducers/tasks";
-
+import {addTodo, completeAll, deleteAll} from "../store/todoSlice";
 
 function Todo() {
     const dispatch = useDispatch();
-    const todos = useSelector((store) => store.tasks.todos);
-    const countAll = useSelector((store) => store.tasks.countAll);
-    const countDone = useSelector((store) => store.tasks.countDone);
-    const [task, setTask] = useState('')
+    const todos = useSelector(state => state.todos.todos);
+    const countAll = useSelector(state => state.todos.countAll);
+    const countDone = useSelector(state => state.todos.countDone);
+    const [name, setName] = useState('')
 
     return (
         <div className="container">
@@ -19,19 +18,19 @@ function Todo() {
                         <input
                             type="text"
                             placeholder="Add task"
-                            value={task}
-                            onChange={(e) => setTask(e.target.value)}
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                         />
                         <button
                             type="button" onClick={() => {
-                            dispatch(addTask(task));
-                            setTask('')
+                            dispatch(addTodo({name}));
+                            setName('')
                         }}>
                             Add
                         </button>
                     </div>
                     <div className="todo__options">
-                        <button type="button" onClick={() =>dispatch(completeAll())}>
+                        <button type="button" onClick={() => dispatch(completeAll())}>
                             Complete All
                         </button>
                         <button type="button" onClick={() => dispatch(deleteAll())}>
@@ -39,7 +38,8 @@ function Todo() {
                         </button>
                     </div>
                     <ul className="todo__list">
-                        {todos.map((task) => (<Task id={task.id} text={task.text} isImportant={task.isImportant} isDone={task.isDone}/>))}
+                        {todos.map((task) => (
+                            <Task id={task.id} text={task.text} isImportant={task.isImportant} isDone={task.isDone}/>))}
                     </ul>
                     <div className="todo__filters">
                         <select>
